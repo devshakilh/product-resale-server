@@ -32,13 +32,7 @@ async function run() {
             const product = await cursor.toArray();
             res.send(product);
         });
-        app.post('/booking', async (req, res) => {
-            const booking = req.body
 
-            const result = await bookingCollection.insertOne(booking);
-            res.send(result);
-        })
-        // serverApi 
         // service api 
         app.get('/add', async (req, res) => {
             console.log(req.query.email);

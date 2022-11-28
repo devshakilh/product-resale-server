@@ -24,6 +24,20 @@ async function run() {
             res.send(product);
         });
 
+        app.get('/product/:id', async (req, res) => {
+            const id = req.params.id;
+
+            const query = { category_id: (id) };
+            const cursor = productCollection.find(query);
+            const product = await cursor.toArray();
+            res.send(product);
+        });
+        app.post('/booking', async (req, res) => {
+            const booking = req.body
+
+            const result = await bookingCollection.insertOne(booking);
+            res.send(result);
+        })
 
 
     }

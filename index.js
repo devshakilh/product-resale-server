@@ -38,7 +38,7 @@ async function run() {
             const result = await bookingCollection.insertOne(booking);
             res.send(result);
         })
-        // serverApi 
+
         // service api 
         app.get('/add', async (req, res) => {
             console.log(req.query.email);

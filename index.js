@@ -38,7 +38,30 @@ async function run() {
             const result = await bookingCollection.insertOne(booking);
             res.send(result);
         })
+        // serverApi 
+        // service api 
+        app.get('/add', async (req, res) => {
+            console.log(req.query.email);
+            let query = {};
+            if (req.query.email) {
+                query = {
+                    email: req.query.email
+                }
+            }
+            const cursor = addCollection.find(query);
+            const add = await cursor.toArray();
+            res.send(add);
 
+        });
+
+        app.get('/add/:id', async (req, res) => {
+            const id = req.params.id;
+
+            const query = { category_id: (id) };
+            const cursor = productCollection.find(query);
+            const product = await cursor.toArray();
+            res.send(product);
+        });
 
     }
     finally {
